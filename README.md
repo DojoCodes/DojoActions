@@ -1,2 +1,2 @@
-# DojoActionsContainer
-Docker container which contains everything to interact with the DojoCodes API
+# Dojo Actions
+GitHub Actions which contains everything to interact with the DojoCodes API
