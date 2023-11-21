@@ -1,0 +1,31 @@
+name: 'Upload Dojo Project'
+description: 'Uploads a dojo.codes project'
+inputs:
+  dojo-api-url:
+    description: 'URL of the Dojo API'
+    required: false
+    default: 'https://api.dojo.codes'
+  author:
+    description: 'Author of the project'
+    required: false
+    default: ${{ github.actor }}
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare Python environment
+      run: sudo apt-get install python3-setuptools
+
+    - name: Install dependencies
+      run: pip3 install .
+
+    - name: Run deployment script
+      run: python3 dojo_actions/upload_campaign.py
+      env:
+        DOJO_USERNAME: ${{ secrets.DOJO_USERNAME }}
+        DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
+        GITHUB_USERNAME: ${{ inputs.author }}
+        DOJO_API_URL: ${{ inputs.dojo-api-url }}
