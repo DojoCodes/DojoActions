@@ -32,9 +32,8 @@ runs:
       working-directory: ${{ github.action_path }}
 
     - name: Run deployment script
-      run: python3 dojo_actions/upload_campaign.py
+      run: python3 ${{ github.action_path }}/dojo_actions/upload_campaign.py
       shell: bash
-      working-directory: ${{ github.action_path }}
       env:
         DOJO_USERNAME: ${{ inputs.dojo-username }}
         DOJO_TOKEN: ${{ inputs.dojo-token }}
