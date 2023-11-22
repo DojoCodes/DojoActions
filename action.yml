@@ -9,6 +9,12 @@ inputs:
     description: 'Author of the project'
     required: false
     default: ${{ github.actor }}
+  dojo-username:
+    description: "Username on dojo.codes instance"
+    required: true
+  dojo-token:
+    description: "Token required to auth on dojo.codes instance"
+    required: true
 outputs:
   random-number:
     description: "Random number"
@@ -28,7 +34,7 @@ runs:
       run: python3 dojo_actions/upload_campaign.py
       shell: bash
       env:
-        DOJO_USERNAME: ${{ secrets.DOJO_USERNAME }}
-        DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
+        DOJO_USERNAME: ${{ inputs.dojo-username }}
+        DOJO_TOKEN: ${{ inputs.dojo-token }}
         GITHUB_USERNAME: ${{ inputs.author }}
         DOJO_API_URL: ${{ inputs.dojo-api-url }}
