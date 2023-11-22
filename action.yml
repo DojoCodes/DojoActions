@@ -38,5 +38,5 @@ runs:
       env:
         DOJO_USERNAME: ${{ inputs.dojo-username }}
         DOJO_TOKEN: ${{ inputs.dojo-token }}
-        GITHUB_USERNAME: ${{ inputs.author }}
+        PROJECT_AUTHOR: ${{ inputs.author }}
         DOJO_API_URL: ${{ inputs.dojo-api-url }}
