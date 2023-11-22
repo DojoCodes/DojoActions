@@ -18,12 +18,15 @@ runs:
   steps:
     - name: Prepare Python environment
       run: sudo apt-get install python3-setuptools
+      shell: bash
 
     - name: Install dependencies
       run: pip3 install .
+      shell: bash
 
     - name: Run deployment script
       run: python3 dojo_actions/upload_campaign.py
+      shell: bash
       env:
         DOJO_USERNAME: ${{ secrets.DOJO_USERNAME }}
         DOJO_TOKEN: ${{ secrets.DOJO_TOKEN }}
